@@ -27,7 +27,7 @@
 > 例如: 我在 `test` 文件夹里右键新增页面 `test-page`，页面的入口 `.js` 文件会有如下的路径 `test/test-page/test-page.js` 
 
 
-<img src="docs/screenshots1.png" width="680" />
+<img src="https://raw.githubusercontent.com/yenche123/mini-create/main/docs/screenshots1.png" width="680" />
 
 <br>
 
