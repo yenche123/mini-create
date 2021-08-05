@@ -2,14 +2,15 @@
   "name": "mini-create",
   "displayName": "mini-create 小程序助手",
   "description": "这是 mini-create 小程序助手，快速新增微信或阿里小程序页面和组件",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "publisher": "yenche123",
   "engines": {
-    "vscode": "^1.27.0"
+    "vscode": "^1.58.0"
   },
   "categories": [
     "Other"
   ],
+  "keywords": ["mini-program", "wxapp", "小程序", "aliapp"],
   "activationEvents": [
     "onCommand:miniCreate.wxMini.createPage",
     "onCommand:miniCreate.wxMini.createComponent",
@@ -79,5 +80,16 @@
     "mocha": "^8.4.0",
     "typescript": "^4.3.2",
     "vscode-test": "^1.5.2"
-  }
+  },
+  "license": "SEE LICENSE IN LICENSE.txt",
+  "bugs": {
+    "url": "https://github.com/yenche123/mini-creat/issues",
+    "email": "jd861230@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yenche123/mini-creat.git"
+  },
+  "homepage": "https://github.com/yenche123/mini-create",
+  "icon": "docs/mini-create-logo.png"
 }
