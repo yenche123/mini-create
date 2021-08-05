@@ -2,7 +2,7 @@
   "name": "mini-create",
   "displayName": "mini-create 小程序助手",
   "description": "这是 mini-create 小程序助手，快速新增微信或阿里小程序页面和组件",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "publisher": "yenche123",
   "engines": {
     "vscode": "^1.58.0"
