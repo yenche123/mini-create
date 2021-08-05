@@ -1,0 +1,83 @@
+{
+  "name": "mini-create",
+  "displayName": "mini-create 小程序助手",
+  "description": "这是 mini-create 小程序助手，快速新增微信或阿里小程序页面和组件",
+  "version": "0.0.1",
+  "publisher": "yenche123",
+  "engines": {
+    "vscode": "^1.27.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:miniCreate.wxMini.createPage",
+    "onCommand:miniCreate.wxMini.createComponent",
+    "onCommand:miniCreate.aliMini.createPage",
+    "onCommand:miniCreate.aliMini.createComponent"
+  ],
+  "main": "./src/extension.js",
+  "contributes": {
+    "commands": [{
+        "command": "miniCreate.wxMini.createPage",
+        "title": "新建 wx小程序页面"
+      },
+      {
+        "command": "miniCreate.wxMini.createComponent",
+        "title": "新建 wx小程序组件"
+      },
+      {
+        "command": "miniCreate.aliMini.createPage",
+        "title": "新建 ali小程序页面"
+      },
+      {
+        "command": "miniCreate.aliMini.createComponent",
+        "title": "新建 ali小程序组件"
+      }
+    ],
+    "menus": {
+      "explorer/context": [{
+        "when": "explorerResourceIsFolder",
+        "submenu": "editMiniProgramTemplates",
+        "group": "1_modification"
+      }],
+      "editMiniProgramTemplates": [{
+          "command": "miniCreate.wxMini.createPage",
+          "group": "navigation"
+        },
+        {
+          "command": "miniCreate.wxMini.createComponent",
+          "group": "navigation"
+        },
+        {
+          "command": "miniCreate.aliMini.createPage",
+          "group": "navigation"
+        },
+        {
+          "command": "miniCreate.aliMini.createComponent",
+          "group": "navigation"
+        }
+      ]
+    },
+    "submenus": [{
+      "id": "editMiniProgramTemplates",
+      "label": "新建 小程序页面或组件"
+    }]
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "pretest": "npm run lint",
+    "test": "node ./test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.58.0",
+    "@types/glob": "^7.1.3",
+    "@types/mocha": "^8.2.2",
+    "@types/node": "14.x",
+    "eslint": "^7.27.0",
+    "glob": "^7.1.7",
+    "mocha": "^8.4.0",
+    "typescript": "^4.3.2",
+    "vscode-test": "^1.5.2"
+  }
+}
