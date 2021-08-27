@@ -131,6 +131,22 @@ async function main(uri) {
     console.log(err)
   }
 
+  /********************** 添加路径到 app.json ******************/
+  const rootPath = vscode.workspace.workspaceFolders[0].uri.fsPath;
+  const fileName = path.resolve(uri.fsPath, `${packName}/${packName}`);
+  const [_, filePath] = fileName.split(rootPath);
+  const newPath = filePath.replaceAll("\\", "/").slice(1);
+  const file = path.resolve(rootPath, "app.json");
+  console.log("ok");
+  fs.access(file, (err) => {
+    if (err) return vscode.window.showErrorMessage("根目录不存在app.json文件");
+    fs.readFile(file, (err, data) => {
+      if (err) return console.log(err);
+      const app = JSON.parse(data);
+      app.pages.unshift(newPath);
+      fs.writeFileSync(file, JSON.stringify(app, null, "\t"));
+    });
+  });
 
   /********************** 用编辑器打开 .js 文件 ******************/
   targetFolder = path.join(targetFolder, `../${packName}.js`)
