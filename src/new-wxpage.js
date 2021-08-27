@@ -137,16 +137,17 @@ async function main(uri) {
   const [_, filePath] = fileName.split(rootPath);
   const newPath = filePath.replaceAll("\\", "/").slice(1);
   const file = path.resolve(rootPath, "app.json");
-  console.log("ok");
-  fs.access(file, (err) => {
-    if (err) return vscode.window.showErrorMessage("根目录不存在app.json文件");
+  try {
+    if (!fs.existsSync(file)) throw "根目录不存在app.json文件";
     fs.readFile(file, (err, data) => {
       if (err) return console.log(err);
       const app = JSON.parse(data);
       app.pages.unshift(newPath);
       fs.writeFileSync(file, JSON.stringify(app, null, "\t"));
     });
-  });
+  } catch (error) {
+    vscode.window.showErrorMessage(error);
+  }
 
   /********************** 用编辑器打开 .js 文件 ******************/
   targetFolder = path.join(targetFolder, `../${packName}.js`)
