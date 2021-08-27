@@ -44,19 +44,19 @@
       }],
       "editMiniProgramTemplates": [{
           "command": "miniCreate.wxMini.createPage",
-          "group": "navigation"
+          "group": "navigation@1"
         },
         {
           "command": "miniCreate.wxMini.createComponent",
-          "group": "navigation"
+          "group": "navigation@2"
         },
         {
           "command": "miniCreate.aliMini.createPage",
-          "group": "navigation"
+          "group": "navigation@3"
         },
         {
           "command": "miniCreate.aliMini.createComponent",
-          "group": "navigation"
+          "group": "navigation@4"
         }
       ]
     },
