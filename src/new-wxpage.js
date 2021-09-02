@@ -24,7 +24,6 @@ async function main(uri) {
   try {
     if (!fs.existsSync(file)) throw "根目录不存在app.json文件";
     fs.readFile(file, (err, data) => {
-      if (err) return console.log(err);
       const app = JSON.parse(data);
       app.pages.unshift(newPath);
       fs.writeFileSync(file, JSON.stringify(app, null, "\t"));
