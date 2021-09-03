@@ -41,11 +41,18 @@
 
 <br>
 
-## To-Do List
+## 调试本项目
 
-- 新增页面后，能自动添加页面路径到 `app.json` 中
+1. `git clone https://github.com/yenche123/mini-create.git`
+
+2. `cd mini-create`
+
+3. 打开 `VS Code`, 点击`F5`，会开启新的窗口 `Extension Development Host`
+
+4. 在新的窗口上测试
 
 <br>
+
 
 ## 开源地址
 

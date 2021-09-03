@@ -1,9 +1,9 @@
 // 生成 阿里小程序 页面
 const vscode = require('vscode')
 const util = require("./utils/util")
-const fs = require("fs");
-const path = require("path");
-
+const fs = require("fs")
+const path = require("path")
+const AddToAppJson = require("./utils/add-to-app-json")
 
 async function main(uri) {
   let rightPath = uri.path
@@ -126,6 +126,9 @@ async function main(uri) {
     console.log("出现 读写 lang.js 文件错误......")
     console.log(err)
   }
+
+  /****************** 添加路径到 app.json *****************/
+  AddToAppJson.add(uri, packName, "ali")
 
   /********************** 用编辑器打开 .js 文件 ******************/
   targetFolder = path.join(targetFolder, `../${packName}.js`)

@@ -15,7 +15,6 @@ async function getPackageName(pType = "PAGE") {
 }
 
 
-
 /**
  * 为 Tool 命名，比如生成 XxPager 或 XxHelper
  * @param {*} name 文件夹名称
@@ -97,7 +96,12 @@ function checkPackageName(name) {
 }
 
 
-
+/**
+ * 检测 url 路径下，是否已存在了某文件夹
+ * @param {String} url 待检测的路径下
+ * @param {String} name 待新建的组件或页面
+ * @returns {Boolean} 是否已经存在了该文件夹
+ */
 function isFolderExist(url, name) {
   let _url = path.join(url, name)
   let exi = fs.existsSync(_url)
@@ -107,9 +111,21 @@ function isFolderExist(url, name) {
   return exi
 }
 
+
+/**
+ * 获取当前所在的目录路径
+ * @returns {String} 当前所在的目录路径
+ */
+function getWorkspacePath() {
+  let workspaceFolders = vscode.workspace.workspaceFolders
+  return Array.isArray(workspaceFolders) ? workspaceFolders[0].uri.fsPath : ""
+}
+
+
 module.exports = {
   getToolerName,
   getPackageName,
   checkPackageName,
   isFolderExist,
+  getWorkspacePath,
 }
