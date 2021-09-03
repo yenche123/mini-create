@@ -15,6 +15,23 @@ async function main(uri) {
   if (!util.checkPackageName(packName)) return
   if (util.isFolderExist(rightPath, packName)) return
 
+  /********************** 添加路径到 app.json ******************/
+  const rootPath = vscode.workspace.workspaceFolders[0].uri.fsPath;
+  const fileName = path.resolve(uri.fsPath, `${packName}/${packName}`);
+  const [_, filePath] = fileName.split(rootPath);
+  const newPath = filePath.replaceAll("\\", "/").slice(1);
+  const file = path.resolve(rootPath, "app.json");
+  try {
+    if (!fs.existsSync(file)) throw "根目录不存在app.json文件";
+    fs.readFile(file, (err, data) => {
+      const app = JSON.parse(data);
+      app.pages.unshift(newPath);
+      fs.writeFileSync(file, JSON.stringify(app, null, "\t"));
+    });
+  } catch (error) {
+    vscode.window.showErrorMessage(error);
+  }
+
   // 生成 XxPager
   // toolKebabCase: xxx-helper
   // toolPascalCase: XxxHelper
@@ -130,7 +147,6 @@ async function main(uri) {
     console.log("出现 读写 lang.js 文件错误......")
     console.log(err)
   }
-
 
   /********************** 用编辑器打开 .js 文件 ******************/
   targetFolder = path.join(targetFolder, `../${packName}.js`)
