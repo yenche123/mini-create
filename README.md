@@ -24,7 +24,7 @@
 
 5. 新建的小程序`页面或组件`，是在你右键点击的节点下，再新建一个文件夹，在该文件夹中再添加`页面或组件`所需的文件
 
-> 例如: 我在 `test` 文件夹里右键新增页面 `test-page`，页面的入口 `.js` 文件会有如下的路径 `test/test-page/test-page.js` 
+> 例如: 我在节点树 `test` 文件夹上右键新增页面 `test-page`，页面的入口 `.js` 文件会有如下的路径 `test/test-page/test-page.js` 
 
 
 <img src="https://raw.githubusercontent.com/yenche123/mini-create/main/docs/screenshots1.png" width="680" />
@@ -35,9 +35,7 @@
 
 ## 注意事项
 
-1. 如果新建的是`页面`，记得手动添加页面路径到 `app.json` 中，本插件尚未支持自动将页面路径插入至 `app.json` 中
-
-2. 新增的页面或组件，请以 `kebab-case` 烤肉串风格进行命名，即名称里全为`英文小写`，并且以 `-` 字符串联单词 
+- 新增的页面或组件，请以 `kebab-case` 烤肉串风格进行命名，即名称里全为`英文小写`，并且以 `-` 字符串联单词 
 
 <br>
 
@@ -50,6 +48,12 @@
 3. 打开 `VS Code`, 点击`F5`，会开启新的窗口 `Extension Development Host`
 
 4. 在新的窗口上测试
+
+### 打包
+
+1. 安装: `npm i vsce -g`
+
+2. 打包: `vsce package`
 
 <br>
 

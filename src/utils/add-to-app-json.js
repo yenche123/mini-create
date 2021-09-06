@@ -3,7 +3,7 @@ const vscode = require('vscode')
 const util = require("./util")
 const path = require('path')
 const fs = require('fs')
-const { readJSON, updateJSON } = require("./json")
+const { readJSON } = require("./json")
 
 
 // 主函数
@@ -16,10 +16,14 @@ const { readJSON, updateJSON } = require("./json")
  */
 function add(uri, packName, envType = "wx") {
   const app_json_path = _findAppJsonPath(uri)
-  if (!app_json_path) return false
+  if (!app_json_path) {
+    _showAddFail()
+    return false
+  }
 
   let appJson = readJSON(app_json_path)
   if (!appJson) {
+    _showAddFail()
     return false
   }
 
@@ -69,7 +73,7 @@ function add(uri, packName, envType = "wx") {
   return true
 }
 
-
+// 寻找 app.json 所在的位置
 function _findAppJsonPath(uri) {
   const projectPath = util.getWorkspacePath() //示例: d:\zzzz\ccc\ddddd...直到工作目录
   let currentPath = uri.fsPath
@@ -83,6 +87,10 @@ function _findAppJsonPath(uri) {
   return ""
 }
 
+// 显示 添加失败的 toast
+function _showAddFail() {
+  vscode.window.showWarningMessage("添加页面路径至 app.json 失败，请记得手动添加")
+}
 
 // 把页面路径 直接加到主包的 pages 里
 function _writeIntoMainPackage(uri, packName, app_json_path, appJson) {
